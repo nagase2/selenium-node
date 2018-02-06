@@ -39,8 +39,8 @@ driver.get('http://www.google.com/ncr')
 
 let driver2 = new Builder()
     .forBrowser('firefox')
-     .setChromeOptions(
-         new chrome.Options().headless().windowSize({width, height}))
+    .setChromeOptions(
+    new chrome.Options().headless().windowSize({ width, height }))
     .setFirefoxOptions(
     new firefox.Options().headless().windowSize({ width, height }))
     .build();
@@ -48,9 +48,9 @@ let driver2 = new Builder()
 driver2.get('https://developer.mozilla.org/en-US/')
     .then(_ => {
         driver2.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN)
-        console.log(By.name('q'))
+        //console.log(By.name('q'))
     })
-    .then(_ => driver2.wait(until.titleIs('MDN Web Docs'),4000)).then(_ => {
+    .then(_ => driver2.wait(until.titleIs('MDN Web Docs'), 4000)).then(_ => {
         driver2.getTitle().then(title => console.log(title))
     }).then(_ => driver2.takeScreenshot().then(
         function (image, err) {
@@ -63,4 +63,8 @@ driver2.get('https://developer.mozilla.org/en-US/')
     )
     .then(
     _ => driver2.quit(),
-    e => driver2.quit().then(() => { throw e; }));
+    e => driver2.quit().then(() => { throw e; }))
+    .catch((error) => {
+        console.log(err)
+    })    
+
