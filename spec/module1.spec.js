@@ -11,7 +11,7 @@ var mo1 = require('../lib/module1');
 describe('Zaif Manager', () => {
 
 
-  it('ticker情報からbidが取得できている', (done) => {
+  it('ticker情報からbidが取得できている', () => {
 
 
     m1 = new mo1.module1()
@@ -39,16 +39,13 @@ describe('Zaif Manager', () => {
     //内部のモジュールを強制的に書き換えるサンプル
     var parents = new mo1.Parents(m1)
     spyOn(parents.myModule1, 'calc').and.returnValue(12345);
-    parents.calcWithOwnModule(2, 5) /*?*/
+    console.log(parents.calcWithOwnModule(2, 5)) /*?*/
+
+    console.log(parents.calcWithOwnModule(3, 25)) /*?*/
 
   });
 
-
-
-
   afterEach(function () {
-
-
 
   })
 
