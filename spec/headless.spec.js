@@ -56,15 +56,15 @@ describe('Zaif Manager', () => {
   it('ticker情報からbidが取得できている2', (done) => {
     driver.get('http://www.google.com/ncr')
       .then(_ => {
-        driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN)
+        driver.findElement(By.name('q')).sendKeys('news', Key.RETURN)
         //console.log(By.name('q'))
       })
-      .then(_ => driver.wait(until.titleIs('webdriver - Google Search'), 2000)).then(_ => {
+      .then(_ => driver.wait(until.titleContains('news'), 2000)).then(_ => {
         driver.getTitle().then(title => console.log(title/*?*/))
       }).then(_ => driver.takeScreenshot().then(
         function (image, err) {
           //Screenshot will be saved under current directory with name myscreenshot.png
-          fs.writeFile('./myscreenshot.png', image, 'base64', function (error) {
+          fs.writeFile('./myscreenshot2.png', image, 'base64', function (error) {
             if (error != null) {
               console.log("Error occured while saving screenshot" + error);
             } else {
