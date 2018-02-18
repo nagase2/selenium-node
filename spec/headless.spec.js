@@ -21,9 +21,9 @@ describe('Zaif Manager', () => {
     driver = new Builder()
       .forBrowser('chrome')
       .setChromeOptions(
-      new chrome.Options().headless().windowSize({ width, height }))
+        new chrome.Options().headless().windowSize({ width, height }))
       .setFirefoxOptions(
-      new firefox.Options().headless().windowSize({ width, height }))
+        new firefox.Options().headless().windowSize({ width, height }))
       .build();
   });
 
@@ -39,7 +39,7 @@ describe('Zaif Manager', () => {
       }).then(_ => driver.takeScreenshot().then(
         function (image, err) {
           //Screenshot will be saved under current directory with name myscreenshot.png
-          fs.writeFile('./myscreenshot.png', image, 'base64', function (error) {
+          fs.writeFile('./screenshot1.png', image, 'base64', function (error) {
             if (error != null) {
               console.log("Error occured while saving screenshot" + error);
             } else {
@@ -49,8 +49,8 @@ describe('Zaif Manager', () => {
         })
       )
       .then(
-      _ => driver.quit(),
-      e => driver.quit().then(() => { throw e; }));
+        _ => driver.quit(),
+        e => driver.quit().then(() => { throw e; }));
   });
 
   it('ticker情報からbidが取得できている2', (done) => {
@@ -74,8 +74,8 @@ describe('Zaif Manager', () => {
         })
       )
       .then(
-      _ => driver.quit(),
-      e => driver.quit().then(() => { throw e; }));
+        _ => driver.quit(),
+        e => driver.quit().then(() => { throw e; }));
 
   });
 
